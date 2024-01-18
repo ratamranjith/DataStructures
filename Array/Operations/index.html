@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h2>Array Operations</h2>
+    <div class="userData">
+
+        <fieldset class="operations">
+            <legend>Array Operations:</legend>
+          
+            <div>
+              <label for="insert">Insert
+              <input type="radio" id="insert" name="oprs" value="insert" checked />
+            </label>
+            </div>
+            <div>
+              <label for="delete">Delete
+              <input type="radio" id="delete" name="oprs" value="delete" />
+            </label>
+            </div>
+
+            <div>
+              <label for="search">Search
+              <input type="radio" id="search" name="oprs" value="search" />
+            </label>
+            </div>
+            <div>
+              <label for="sorting">Sort
+              <input type="radio" id="sorting" name="oprs" value="sorting" />
+              </label>
+              </div>  
+            </fieldset>
+            <label for="userinput">Value : </label>
+            <input type="text" id="userinput" name="userinput" required minlength="4" maxlength="8" size="10" />
+            <label for="position">At Position :</label>
+            <input type="text" id="position" name="position" required minlength="4" maxlength="8" size="10" /><br/>         
+            <input id="viewDataButton" class="styled" type="button" value="View Data" onclick="performArrayOperation()" />
+    </div>
+    <div class="arrayData">
+    </div>
+    <br/><br/><br/>
+    <div class="arrayData1">
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
