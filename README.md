@@ -1,1 +1,1 @@
-# Data Structures from the Scratch
+Data Structures from the Scratch
