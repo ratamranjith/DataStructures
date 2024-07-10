@@ -32,11 +32,27 @@ nums is an ascending array that is possibly rotated.
 def search(nums, target):
     
     if(len(nums) < 1):
-        return -1
+        return -1   
+       
+    start = 0
+    end   = len(nums) - 1
     
-    for i in range(len(nums)):
-        if(nums[i] == target):
-            return i
+    # Applying Binary Search
+    while(start <= end):
+        mid = (start + end)//2
+        if(nums[mid] == target):
+            return mid
+        
+        if(nums[start] <= nums[mid]):
+            if(target > nums[mid] or target < nums[start]):
+                start = mid + 1
+            else:
+                end  = mid - 1
+        else:
+            if(target < nums[mid] or target > nums[end]):
+                start = mid - 1
+            else:
+                end = mid + 1
     else:
         return -1
 
