@@ -13,10 +13,11 @@ def quickSort(arrayValue):
 
     pivot = arrayValue[len(arrayValue)//2] # Divide and Conquer
     left = [i for i in arrayValue if(i < pivot)] # Pivot with left comparison
-    right = [i for i in arrayValue if(i > pivot)] # Pivot with left comparison
+    right = [i for i in arrayValue if(i > pivot)] # Pivot with right comparison
     middle = [i for i in arrayValue if(i == pivot)] # Pivot with middle comparison
     
     return (quickSort(left) + middle + quickSort(right))
 
-data = [1, 7, 4, 1, 10, 9, -2]
+# data = [1, 7, 4, 1, 10, 9, -2]
+data = [1,2,3,2,5,6]
 print(quickSort(data))

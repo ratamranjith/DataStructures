@@ -43,3 +43,37 @@ Array
 Two Pointers
 Sorting
 '''
+# Sorting the arrays - QuickSort
+def mergeSortedArray(nums1, m, nums2, n):
+    if(len(nums1) < 1 and len(nums2) > 1):
+        return nums2
+    elif(len(nums2) < 1 and len(nums1) > 1):
+        return nums1
+    count = 0
+    
+    # Merging both arrays
+    for i in range(len(nums1)):
+       if(nums1[i] == 0):
+           nums1[i] = nums2[count]
+           count += 1
+
+    def quickSort(arrayValue):
+        
+        if(len(arrayValue) <= 1):
+            return arrayValue
+
+        pivot = arrayValue[len(arrayValue)//2] # Divide and Conquer
+        left = [i for i in arrayValue if(i < pivot)] # Pivot with left comparison
+        right = [i for i in arrayValue if(i > pivot)] # Pivot with left comparison
+        middle = [i for i in arrayValue if(i == pivot)] # Pivot with middle comparison
+        
+        return (quickSort(left) + middle + quickSort(right))         
+    return quickSort(nums1)
+
+
+nums1 = [1,2,3,0,0,0]
+m = 6
+nums2 = [2,3,4]
+n = 3
+
+print(mergeSortedArray(nums1, m, nums2, n))
