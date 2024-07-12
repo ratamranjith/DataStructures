@@ -73,7 +73,7 @@ def mergeSortedArray(nums1, m, nums2, n):
 
 nums1 = [1,2,3,0,0,0]
 m = 6
-nums2 = [2,3,4]
+nums2 = [2,5,6]
 n = 3
 
 print(mergeSortedArray(nums1, m, nums2, n))
