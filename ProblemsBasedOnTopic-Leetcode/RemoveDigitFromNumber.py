@@ -44,6 +44,6 @@ def removeDigit(number:str, digit:str) -> str:
         temp = number
         if value == digit:
             temp = number[:i] + number[i+1:]
-            max = temp if int(temp) > int(max) else max      
+            max = temp if int(temp) > int(max) else max
     return max
 print(removeDigit("1231", "1"))
