@@ -44,7 +44,7 @@ def largestAndSecondLargest(sizeOfArray, arr):
         elif i > secondLargest and i != firstLargest:
             secondLargest = i
         else:
-            return -1
+            secondLargest = -1
     return firstLargest, secondLargest
     
 arr = [10, 10, 10, 10, 10, 10]
