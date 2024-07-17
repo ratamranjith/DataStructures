@@ -1,5 +1,7 @@
 from queue import SimpleQueue, Queue
 
+from collections import deque
+
 #--------------------
 # 1. SimpleQueue
 #--------------------
@@ -43,3 +45,23 @@ print(queue1.qsize()) # 0
 
 # IsEmpty
 print(queue1.empty()) # True
+
+
+#------------------------------
+# 3. Deque (Double ended queue)
+#------------------------------
+deque = deque()
+
+# Insert
+deque.append(5)     # deque([5])
+deque.appendleft(2) # deque([2, 5])
+deque.append(3)     # deque([2, 5, 3])
+deque.appendleft(4) # deque([4, 2, 5, 3])
+deque.append(3)     # deque([4, 2, 5, 3, 3]) 
+deque.append(6)     # deque([4, 2, 5, 3, 3, 6]) 
+
+print(deque)
+
+# Deletion
+print(deque.pop()) # Removes from backside
+print(deque.popleft()) # Removes from frontside
