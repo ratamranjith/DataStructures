@@ -1,5 +1,5 @@
 '''
-Linked List - Using Class (Straight forward Approach)
+Linked List - Using Class (Straight forward Approach) - Simple Way
 '''
 
 class Node:
