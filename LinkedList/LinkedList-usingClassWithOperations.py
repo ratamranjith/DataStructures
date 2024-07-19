@@ -23,6 +23,7 @@ class LinkedList:
             while (current.next != None):
                 current = current.next
             current.next = newNode
+
     #-----------
     # Displaying the data
     def print(self):
