@@ -34,7 +34,7 @@ class Tree:
             self.root = newNode
             return
 
-        currentParent = self.findParentNode(parentNode, self.root)
+        currentParent = self.findNode(parentNode, self.root)
         if currentParent == None:
             print("Parent node not found")
             return
@@ -42,25 +42,61 @@ class Tree:
         currentParent.children.append(newNode)
 
     # Find the parent node - recursion is applied
-    def findParentNode(self, parentNode, node):
+    def findNode(self, parentNode, node=None):
 
         if node.data == parentNode:
             return node
 
         for child in node.children:
-            nodeDetected = self.findParentNode(parentNode, child)
+            nodeDetected = self.findNode(parentNode, child)
             if nodeDetected:
                 return nodeDetected
         return None
 
     # Display the Tree Structure
-    def display(self, depth=0, node=None):
-
+    def display(self, node=None, prefix=""):
         if node is None:
             node = self.root
-        print("  " * depth, node.data)
+        print(prefix + str(node.data))
+        for i, child in enumerate(node.children):
+            if i == len(node.children) - 1:  # Last child
+                self.display(child, prefix + "└── ")
+            else:
+                self.display(child, prefix + "├── ")
+
+    # Deleting the node
+    def removeNode(self, data, parentNode=None):
+
+        if self.root is None:
+            print("Root is not present in the tree")
+            return
+
+        if self.root.data == data:
+            self.root = None
+            return
+
+        removeNodedata = self.findParentNode(data, self.root)
+
+        if removeNodedata:
+            for child in removeNodedata.children:
+                if child.data == data:
+                    removeNodedata.children.remove(child)
+
+        return None
+
+    # Find the parent node - recursion is applied
+    def findParentNode(self, parentNode, node):
+
         for child in node.children:
-            self.display(depth + 1, child)
+
+            # finding only the child node
+            if child.data == parentNode:
+                return node
+
+            nodeDetected = self.findParentNode(parentNode, child)
+            if nodeDetected:
+                return nodeDetected
+        return None
 
 
 tree = Tree()
@@ -71,5 +107,8 @@ tree.addNode(21, 6)
 tree.addNode(9, 7)
 tree.addNode(10, 7)
 tree.addNode(11, 7)
-
+tree.display()
+tree.removeNode(11)
+tree.display()
+tree.removeNode(7)
 tree.display()
