@@ -39,18 +39,37 @@ class Tree:
             print("Parent node not found")
             return
 
+        currentParent.children.append(newNode)
+
     # Find the parent node - recursion is applied
     def findParentNode(self, parentNode, node):
 
         if node.data == parentNode:
-            return node.data
+            return node
 
         for child in node.children:
-            return self.findParentNode(parentNode, child)
-
+            nodeDetected = self.findParentNode(parentNode, child)
+            if nodeDetected:
+                return nodeDetected
         return None
+
+    # Display the Tree Structure
+    def display(self, depth=0, node=None):
+
+        if node is None:
+            node = self.root
+        print("  " * depth, node.data)
+        for child in node.children:
+            self.display(depth + 1, child)
 
 
 tree = Tree()
 tree.addNode(5)
 tree.addNode(6, 5)
+tree.addNode(7, 6)
+tree.addNode(21, 6)
+tree.addNode(9, 7)
+tree.addNode(10, 7)
+tree.addNode(11, 7)
+
+tree.display()
