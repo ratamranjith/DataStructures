@@ -57,6 +57,10 @@ class Tree:
     def display(self, node=None, prefix=""):
         if node is None:
             node = self.root
+
+        if node is None:  # Negative scenario for empty node
+            return
+
         print(prefix + str(node.data))
         for i, child in enumerate(node.children):
             if i == len(node.children) - 1:  # Last child
@@ -111,4 +115,5 @@ tree.display()
 tree.removeNode(11)
 tree.display()
 tree.removeNode(7)
+tree.removeNode(5)
 tree.display()
