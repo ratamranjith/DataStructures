@@ -1,5 +1,5 @@
 """
-Binary Tree:
+Binary Tree: Unbalanced
 - A tree is a data structure that consists of nodes connected through edges.
 - A binary tree is a tree data structure in which each node has at most two children, which
 are referred to as the left child and the right child.
@@ -31,25 +31,25 @@ class BinaryTree:
         # Use recursion method to add nodes
         addedNode = self.linkNode(data, self.root)
 
-    def linkNode(self, data, node=None):
-
+    def linkNode(self, data, node, count=0):
         if node.left is None:
             node.left = TreeNode(data)
         elif node.right is None:
             node.right = TreeNode(data)
         else:
-            self.linkNode(data, node.left)
+            category = node.left if count % 2 == 0 else node.right
+            self.linkNode(data, category, count + 1)
 
-    def display(self, depth=0, node=None):
+    def display(self, node=None, depth=0):
         if node is None:
             node = self.root
 
-        print(" " * depth, node.data)
-
-        if node.left:
-            self.display(depth + 1, node.left)
-        elif node.right:
-            self.display(depth + 1, node.right)
+        if node:
+            print("  " * depth, node.data)
+            if node.left:
+                self.display(node.left, depth + 1)
+            if node.right:
+                self.display(node.right, depth + 1)
 
 
 bt = BinaryTree()
@@ -58,4 +58,10 @@ bt.addNode(7)
 bt.addNode(6)
 bt.addNode(8)
 bt.addNode(2)
+bt.addNode(5)
+bt.addNode(8)
+bt.addNode(9)
+bt.addNode(10)
+bt.addNode(11)
+bt.addNode(12)
 bt.display()
