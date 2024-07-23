@@ -31,14 +31,13 @@ class BinaryTree:
         # Use recursion method to add nodes
         addedNode = self.linkNode(data, self.root)
 
-    def linkNode(self, data, node, count=0):
+    def linkNode(self, data, node):
         if node.left is None:
             node.left = TreeNode(data)
         elif node.right is None:
             node.right = TreeNode(data)
         else:
-            category = node.left if count % 2 == 0 else node.right
-            self.linkNode(data, category, count + 1)
+            self.linkNode(data, node.left)
 
     def display(self, node=None, depth=0):
         if node is None:
