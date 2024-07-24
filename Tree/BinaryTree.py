@@ -70,6 +70,20 @@ class BinaryTree:
         if node.right:
             self.removeRecursively(data, node.right)
 
+    def search(self, data):
+
+        searchFound = self.recursivelySearch(data, self.root)
+        return True if searchFound else False
+
+    def recursivelySearch(self, data, node):
+
+        if not node or node.data == data:
+            return node
+
+        return self.recursivelySearch(data, node.left) or self.recursivelySearch(
+            data, node.right
+        )
+
 
 bt = BinaryTree()
 bt.addNode(1)
@@ -86,3 +100,5 @@ bt.addNode(12)
 bt.display()
 bt.removeNode(10)
 bt.display()
+print(bt.search(8))
+print(bt.search(3))
