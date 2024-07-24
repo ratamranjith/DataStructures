@@ -50,6 +50,26 @@ class BinaryTree:
             if node.right:
                 self.display(node.right, depth + 1)
 
+    def removeNode(self, dataValue):
+
+        if self.root == dataValue:
+            self.root = None
+
+        self.removeRecursively(dataValue, self.root)
+
+    def removeRecursively(self, data, node):
+
+        if node.left and node.left.data == data:
+            node.left = None
+            return
+        if node.right and node.right.data == data:
+            node.right = None
+            return
+        if node.left:
+            self.removeRecursively(data, node.left)
+        if node.right:
+            self.removeRecursively(data, node.right)
+
 
 bt = BinaryTree()
 bt.addNode(1)
@@ -63,4 +83,6 @@ bt.addNode(9)
 bt.addNode(10)
 bt.addNode(11)
 bt.addNode(12)
+bt.display()
+bt.removeNode(10)
 bt.display()
