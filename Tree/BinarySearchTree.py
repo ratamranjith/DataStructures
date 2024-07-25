@@ -4,6 +4,7 @@ Binary Search Tree:
 - A binary search tree is a binary tree where the values of each node are greater than or equal
 to the values in the left subtree and less than or equal to the values in the right subtree
 - Elements or values should be in sorted order.
+- Duplicates will be neglected
 """
 
 
@@ -49,8 +50,31 @@ class BinarySearchTree:
             else:
                 node.right = BinaryTree(data)
 
+    def display(self):
+
+        result = []  # appending the sorted values in this list
+
+        self.inOrderTraversal(self.root, result)
+        print(result)
+
+    def inOrderTraversal(self, node, result):
+
+        if not node:
+            return None
+        else:
+            self.inOrderTraversal(node.left, result)
+            result.append(node.data)
+            self.inOrderTraversal(node.right, result)
+
 
 bst = BinarySearchTree()
 bst.addNode(45)
 bst.addNode(10)
 bst.addNode(50)
+bst.addNode(45)
+bst.addNode(10)
+bst.addNode(50)
+bst.addNode(45)
+bst.addNode(10)
+bst.addNode(50)
+bst.display()
