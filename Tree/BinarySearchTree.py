@@ -28,15 +28,15 @@ class BinarySearchTree:
 
         # ---------------------------------------------
         # Applying the recursive method to add the data
-
-        addData = self.addRecursively(data, self.root)
+        else:
+            self.addRecursively(data, self.root)
 
     def addRecursively(self, data, node):
 
-        if not node:
+        if node is None:
             node = self.root
 
-        # ---------------------------------------------
+        # ----------------------------------------------
         # If the data is less than the node's data, then
         # add the data to the left subtree
         if data < node.data:
@@ -59,22 +59,30 @@ class BinarySearchTree:
 
     def inOrderTraversal(self, node, result):
 
-        if not node:
+        if node is None:
             return None
         else:
             self.inOrderTraversal(node.left, result)
             result.append(node.data)
             self.inOrderTraversal(node.right, result)
 
+    def search(self, data, node=None):
+        if node is None:
+            node = self.root
+        if node is None:
+            return None
+        if node.data == data:
+            return node
+        if data < node.data:
+            return self.search(data, node.left)
+        return self.search(data, node.right)
+
 
 bst = BinarySearchTree()
-bst.addNode(45)
-bst.addNode(10)
-bst.addNode(50)
-bst.addNode(45)
-bst.addNode(10)
-bst.addNode(50)
-bst.addNode(45)
-bst.addNode(10)
-bst.addNode(50)
+elements = [45, 10, 50, 4, 1, 5, 5, 100, 60]
+for element in elements:
+    bst.addNode(element)
+
 bst.display()
+search = "Search Found" if (bst.search(1)) else "Search Not Found"
+print(search)
