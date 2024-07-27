@@ -77,6 +77,25 @@ class BinarySearchTree:
             return self.search(data, node.left)
         return self.search(data, node.right)
 
+    def removeNode(self, dataValue):
+
+        if self.root == dataValue:
+            self.root = None
+        self.removeRecursively(dataValue, self.root)
+
+    def removeRecursively(self, data, node):
+
+        if node.left and node.left.data == data:
+            node.left = None
+            return
+        if node.right and node.right.data == data:
+            node.right = None
+            return
+        if node.data > data:
+            self.removeRecursively(data, node.left)
+        if node.data < data:
+            self.removeRecursively(data, node.right)
+
 
 bst = BinarySearchTree()
 elements = [45, 10, 50, 4, 1, 5, 5, 100, 60]
@@ -84,5 +103,7 @@ for element in elements:
     bst.addNode(element)
 
 bst.display()
-search = "Search Found" if (bst.search(1)) else "Search Not Found"
-print(search)
+bst.removeNode(60)
+bst.display()
+# search = "Search Found" if (bst.search(1)) else "Search Not Found"
+# print(search)
