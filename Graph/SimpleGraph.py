@@ -25,7 +25,7 @@ class Graph:
 
     def display(self):
         for vertex in self.graph:
-            print(vertex, "->", self.graph[vertex])
+            print(vertex, " -> ", self.graph[vertex])
 
 
 graph = Graph()
