@@ -26,6 +26,22 @@ class Graph:
     def display(self):
         for vertex in self.graph:
             print(vertex, " -> ", self.graph[vertex])
+        print("-----------")
+
+    def removeVertex(self, vertex):
+
+        if vertex in self.graph:
+            del self.graph[vertex]
+
+        for key, value in self.graph.items():
+            if vertex in value:
+                value.remove(vertex)
+
+    def removeEdge(self, vertex1, vertex2, isDirectional=False):
+        if vertex1 in self.graph and vertex2 in self.graph[vertex1]:
+            self.graph[vertex1].remove(vertex2)
+            if not isDirectional:
+                self.graph[vertex2].remove(vertex1)
 
 
 graph = Graph()
@@ -33,3 +49,7 @@ graph.addEdge("A", "B")
 graph.addEdge("B", "C")
 graph.addEdge("C", "A", True)
 graph.display()  # Output: A -> ['B'], B -> ['A', 'C'],
+graph.removeVertex("B")
+graph.removeEdge("A", "B")
+graph.removeEdge("A", "C")
+graph.display()
