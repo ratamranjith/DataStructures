@@ -36,8 +36,34 @@ class WeightedGraph:
         if not isDirectional:
             self.graph[destinationLocation][sourceLocation] = distance
 
+    def removeEdges(self, sourceLocation, destinationLocation):
+
+        if (
+            sourceLocation in self.graph
+            and destinationLocation in self.graph[sourceLocation]
+        ):
+            del self.graph[sourceLocation][destinationLocation]
+
+        if (
+            destinationLocation in self.graph
+            and sourceLocation in self.graph[destinationLocation]
+        ):
+            del self.graph[destinationLocation][sourceLocation]
+
+    def removeVertex(self, vertex):
+        if vertex in self.graph:
+            del self.graph[vertex]
+
+        for locations in self.graph:
+            if vertex in self.graph[locations]:
+                del self.graph[locations][vertex]
+
 
 weight = WeightedGraph()
 weight.addEdges("Chennai", "Madurai", "350-km")
 weight.addEdges("Chennai", "Banglore", "250-km")
+print(weight.graph)
+weight.removeEdges("Chennai", "Madurai")
+print(weight.graph)
+weight.removeVertex("Chennai")
 print(weight.graph)
