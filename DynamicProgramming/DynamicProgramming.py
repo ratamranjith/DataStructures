@@ -16,8 +16,8 @@ zero using no elements.
 """
 
 
-# Bottom Up approach
-def fibonacci_dyn(position):
+# Bottom Up approach - Tabulation
+def fibonacci_bottom_up(position):
 
     dynamicList = [0] * position  # list Allocated
     dynamicList[0] = 1
@@ -30,4 +30,21 @@ def fibonacci_dyn(position):
     return dynamicList[position - 1]
 
 
-print(fibonacci_dyn(9))
+# Top Down approach - Memoization
+def fibonacci_top_down(position, memory={}):  # store it in dictionary memory
+
+    if position in memory:
+        return memory[position]
+
+    if position <= 2:
+        return 1
+
+    memory[position] = fibonacci_top_down(position - 1) + fibonacci_top_down(
+        position - 2
+    )
+
+    return memory[position]
+
+
+print(fibonacci_bottom_up(9))
+print(fibonacci_top_down(9))
