@@ -15,7 +15,6 @@ def twoSum(nums, target):
     rightPointer = len(nums) - 1
     while(leftPointer < rightPointer):
         sumResult = (nums[leftPointer] + nums[rightPointer])
-        print(sumResult)
         if(sumResult == target):
             return ([leftPointer, rightPointer])
         elif(sumResult < target):
@@ -24,7 +23,7 @@ def twoSum(nums, target):
             rightPointer -= 1
     else:
         return ([-1, -1])
-#arr = [1,2,3,4,5,6]
-arr = [3,2,4]
-target = 16
+arr = [1,2,3,4,5,6]
+# arr = [3,2,4]
+target = 8
 print(twoSum(arr, target))

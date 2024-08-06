@@ -105,5 +105,5 @@ for element in elements:
 bst.display()
 bst.removeNode(60)
 bst.display()
-# search = "Search Found" if (bst.search(1)) else "Search Not Found"
-# print(search)
+search = "Search Found" if (bst.search(1)) else "Search Not Found"
+print(search)
