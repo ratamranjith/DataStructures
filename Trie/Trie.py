@@ -20,18 +20,6 @@ Operations on a Trie:
 
 Example Structure:
 Consider inserting the words "cat", "car", "cart", and "dog" into a Trie:
-        (root)
-       /    \
-      c      d
-     /        \
-    a          o
-   /            \
-  t              g
- / \             \
-r   (end)        (end)
- \
-  t
-  (end)
 
 In this Trie:
 
@@ -43,124 +31,164 @@ Examples of Tries with Different Strings:
 Here are 20 different examples of Tries built with various sets of words:
 
 Insert "apple", "ape", "bat", "ball", "bar":
-
 Root → a → p → p → l → e (end)
 Root → a → p → e (end)
 Root → b → a → t (end)
 Root → b → a → l → l (end)
 Root → b → a → r (end)
-Insert "hello", "help", "helmet", "hero":
 
+Insert "hello", "help", "helmet", "hero":
 Root → h → e → l → l → o (end)
 Root → h → e → l → p (end)
 Root → h → e → l → m → e → t (end)
 Root → h → e → r → o (end)
-Insert "ant", "anthem", "anchor", "angle":
 
+Insert "ant", "anthem", "anchor", "angle":
 Root → a → n → t (end)
 Root → a → n → t → h → e → m (end)
 Root → a → n → c → h → o → r (end)
 Root → a → n → g → l → e (end)
-Insert "rat", "rate", "ratify", "rattle":
 
+Insert "rat", "rate", "ratify", "rattle":
 Root → r → a → t (end)
 Root → r → a → t → e (end)
 Root → r → a → t → i → f → y (end)
 Root → r → a → t → t → l → e (end)
-Insert "sun", "sunny", "sunlight", "solar":
 
+Insert "sun", "sunny", "sunlight", "solar":
 Root → s → u → n (end)
 Root → s → u → n → n → y (end)
 Root → s → u → n → l → i → g → h → t (end)
 Root → s → o → l → a → r (end)
-Insert "frog", "frost", "freeze", "frozen":
 
+Insert "frog", "frost", "freeze", "frozen":
 Root → f → r → o → g (end)
 Root → f → r → o → s → t (end)
 Root → f → r → e → e → z → e (end)
 Root → f → r → o → z → e → n (end)
-Insert "blue", "blush", "blow", "black":
 
+Insert "blue", "blush", "blow", "black":
 Root → b → l → u → e (end)
 Root → b → l → u → s → h (end)
 Root → b → l → o → w (end)
 Root → b → l → a → c → k (end)
-Insert "tree", "trick", "trip", "train":
 
+Insert "tree", "trick", "trip", "train":
 Root → t → r → e → e (end)
 Root → t → r → i → c → k (end)
 Root → t → r → i → p (end)
 Root → t → r → a → i → n (end)
-Insert "sky", "skate", "skill", "ski":
 
+Insert "sky", "skate", "skill", "ski":
 Root → s → k → y (end)
 Root → s → k → a → t → e (end)
 Root → s → k → i → l → l (end)
 Root → s → k → i (end)
-Insert "cat", "can", "candy", "cap":
 
+Insert "cat", "can", "candy", "cap":
 Root → c → a → t (end)
 Root → c → a → n (end)
 Root → c → a → n → d → y (end)
 Root → c → a → p (end)
-Insert "star", "start", "stare", "stark":
 
+Insert "star", "start", "stare", "stark":
 Root → s → t → a → r (end)
 Root → s → t → a → r → t (end)
 Root → s → t → a → r → e (end)
 Root → s → t → a → r → k (end)
-Insert "jump", "jungle", "just", "juice":
 
+Insert "jump", "jungle", "just", "juice":
 Root → j → u → m → p (end)
 Root → j → u → n → g → l → e (end)
 Root → j → u → s → t (end)
 Root → j → u → i → c → e (end)
-Insert "king", "kite", "kind", "kick":
 
+Insert "king", "kite", "kind", "kick":
 Root → k → i → n → g (end)
 Root → k → i → t → e (end)
 Root → k → i → n → d (end)
 Root → k → i → c → k (end)
-Insert "road", "roam", "rock", "root":
 
+Insert "road", "roam", "rock", "root":
 Root → r → o → a → d (end)
 Root → r → o → a → m (end)
 Root → r → o → c → k (end)
 Root → r → o → o → t (end)
-Insert "fish", "fit", "fix", "fist":
 
+Insert "fish", "fit", "fix", "fist":
 Root → f → i → s → h (end)
 Root → f → i → t (end)
 Root → f → i → x (end)
 Root → f → i → s → t (end)
-Insert "leaf", "learn", "leap", "least":
 
+Insert "leaf", "learn", "leap", "least":
 Root → l → e → a → f (end)
 Root → l → e → a → r → n (end)
 Root → l → e → a → p (end)
 Root → l → e → a → s → t (end)
-Insert "moon", "mood", "move", "mock":
 
+Insert "moon", "mood", "move", "mock":
 Root → m → o → o → n (end)
 Root → m → o → o → d (end)
 Root → m → o → v → e (end)
 Root → m → o → c → k (end)
-Insert "pine", "pink", "pin", "pipe":
 
+Insert "pine", "pink", "pin", "pipe":
 Root → p → i → n → e (end)
 Root → p → i → n → k (end)
 Root → p → i → n (end)
 Root → p → i → p → e (end)
-Insert "shine", "ship", "shirt", "shock":
 
+Insert "shine", "ship", "shirt", "shock":
 Root → s → h → i → n → e (end)
 Root → s → h → i → p (end)
 Root → s → h → i → r → t (end)
 Root → s → h → o → c → k (end)
-Insert "gate", "gap", "game", "gain":
 
+Insert "gate", "gap", "game", "gain":
 Root → g → a → t → e (end)
 Root → g → a → p (end)
 Root → g → a → m → e (end)
 Root → g → a → i → n (end)
 '''
+
+class TrieNode:
+
+    def __init__(self):
+        self.children = {}
+        self.is_end_of_word = False
+
+
+class Trie:
+
+    def __init__(self):
+        self.root = TrieNode()
+
+    def add_word(self, word):
+
+        current_node = self.root
+
+        for characters in word:
+            if characters not in current_node.children:
+                current_node.children[characters] = TrieNode()
+            current_node = current_node.children[characters]
+        print(current_node.children)
+        current_node.is_end_of_word = True
+
+    def search_word(self, word):
+      
+        current_node = self.root
+        
+        for characters in word:
+          if characters not in current_node.children:
+            return False
+          current_node = current_node.children[characters]
+        if current_node.is_end_of_word:
+          return True
+        return False
+
+trie = Trie()
+trie.add_word("INTRUDER")
+trie.add_word("RANJITH")
+print(trie.search_word("INTRUDER")) # True
+print(trie.search_word("RANJ")) # False
