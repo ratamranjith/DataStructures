@@ -5,7 +5,7 @@ Trie Data Structure:
 
 Key Characteristics of a Trie:
 - Nodes and Edges: Each node in the Trie represents a single character of the key. 
-                   The root node is usually empty, and the edges between nodes represent the connection between characters.
+                   The root node is usually empty, and the edges between nodes represent the connection between character.
 - Prefix Matching: Trie is very efficient for prefix matching. It allows for quick lookups, insertions, and deletions.
 - End of Word Marker: Nodes may have a marker to indicate the end of a valid word or key.
 - Space Efficiency: Tries can be more space-efficient than hash tables when dealing with large datasets, especially when keys share common prefixes.
@@ -168,27 +168,54 @@ class Trie:
 
         current_node = self.root
 
-        for characters in word:
-            if characters not in current_node.children:
-                current_node.children[characters] = TrieNode()
-            current_node = current_node.children[characters]
-        print(current_node.children)
+        for character in word:
+            if character not in current_node.children:
+                current_node.children[character] = TrieNode()
+            current_node = current_node.children[character]
         current_node.is_end_of_word = True
 
     def search_word(self, word):
       
         current_node = self.root
         
-        for characters in word:
-          if characters not in current_node.children:
+        for character in word:
+          if character not in current_node.children:
             return False
-          current_node = current_node.children[characters]
+          current_node = current_node.children[character]
         if current_node.is_end_of_word:
           return True
         return False
+
+    def remove_word(self, word):
+      
+      stack = [] # need to apply LIFO/FILO
+      
+      if not self.search_word(word):
+          return "Word not available, try again"
+
+      current_node = self.root
+
+      for character in word:
+        stack.append(current_node)
+        current_node = current_node.children[character]
+      current_node.is_end_of_word = False
+
+      length = len(stack) - 1
+      while(length > 0):
+        removeNode = stack.pop()
+        char = word[length]
+        
+        if not removeNode.children[char].is_end_of_word and removeNode.children[char].children:
+          del current_node.children[char]
+          length -= 1
+        else:
+          break
+      print("Word Removed")
 
 trie = Trie()
 trie.add_word("INTRUDER")
 trie.add_word("RANJITH")
 print(trie.search_word("INTRUDER")) # True
 print(trie.search_word("RANJ")) # False
+print(trie.remove_word("RANJITH")) # Word Removed
+print(trie.remove_word("RANJITH")) # Word not available, try again
