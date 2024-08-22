@@ -40,8 +40,10 @@ class HeapDS: # Code is similar to binary tree
         
         if not node.left:
             node.left = tree_node
+            self.heap_up(node.left)
         elif not node.right:
             node.right = tree_node
+            self.heap_up(node.right)
         else:
             if self.count_node(node.left) <=  self.count_node(node.right):
                 self.add_recursively(data, node.left)
@@ -52,13 +54,38 @@ class HeapDS: # Code is similar to binary tree
         
         if not node:
             return 0
-        
         return 1 + self.count_node(node.left) + self.count_node(node.right)
         
-        
-        
-heap = HeapDS()
+    def heap_up(self, node): # for heapify
 
+        while node and node != self.root:
+            parentNode = self.get_parent(node, self.root)
+
+            if parentNode.data > node.data:
+                parentNode.data, node.data = node.data, parentNode.data
+                node = parentNode
+            else:
+                break        
+
+    def get_parent(self, node, root):
+        
+        if root.left == node or root.right == node:
+            return root
+        if root.left:
+            parent = self.get_parent(node, root.left)
+            if parent: return parent
+        if root.right:
+            parent = self.get_parent(node, root.right)
+            if parent: return parent
+        return None
+
+    def print_heap(self, node, level=0):
+        if node is not None:
+            self.print_heap(node.right, level + 1)
+            print(' ' * 4 * level + '->', node.data)
+            self.print_heap(node.left, level + 1)
+
+heap = HeapDS()
 heap.add_node(5)
 heap.add_node(6)
 heap.add_node(7)
@@ -68,4 +95,4 @@ heap.add_node(10)
 heap.add_node(11)
 heap.add_node(12)
 
-print(heap)
+heap.print_heap(heap.root)
